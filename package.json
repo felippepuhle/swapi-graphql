@@ -32,6 +32,9 @@
     "react": "global:React"
   },
   "scripts": {
+    "postinstall": "npm run download && npm run build",
+    "build:heroku": "rimraf ./dist && babel src --ignore __tests__ --out-dir dist --copy-files",
+    "serve:heroku": "node dist/server/main.js",
     "test": "npm run lint && npm run pretty-check && npm run check && npm run testonly",
     "start": "npm run download && babel-node src/server/main.js",
     "watch": "babel scripts/watch.js | node",
